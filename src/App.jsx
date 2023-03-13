@@ -10,9 +10,12 @@ function App() {
   const [entrada, setEntrada] = useState("");
   const [entrada2, setEntrada2] = useState("");
 
-  function add() {
+  function add(e){
     api.post("dados", { nome: entrada, descricao: entrada2 }).then((res) => {
       setCount([...count, res.data]);
+      setEntrada("");
+      setEntrada2("");
+      e.preventDefault();
     });
   }
 
