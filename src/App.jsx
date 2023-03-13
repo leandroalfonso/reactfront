@@ -13,9 +13,12 @@ function App() {
   function add(e){
     api.post("dados", { nome: entrada, descricao: entrada2 }).then((res) => {
       setCount([...count, res.data]);
+      e.preventDefault();
       setEntrada("");
       setEntrada2("");
-      e.preventDefault();
+      alert('inserido com sucesso')
+     
+
     });
   }
 
