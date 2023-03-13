@@ -5,7 +5,7 @@ import axios from 'axios'
 
 export default axios.create({
     
-    baseURL : 'https://confused-cow-scarf.cyclic.app//'
+    baseURL : 'https://confused-cow-scarf.cyclic.app/'
 
 });
 
