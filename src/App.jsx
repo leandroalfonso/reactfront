@@ -4,18 +4,17 @@ import "./App.css";
 
 import api from "./Api";
 
-
 function App() {
   const [count, setCount] = useState([]);
- 
+
   const [entrada, setEntrada] = useState("");
   const [entrada2, setEntrada2] = useState("");
 
-function add(){
-    api.post("dados", {nome: entrada, descricao:entrada2}).then((res) => {
+  function add() {
+    api.post("dados", { nome: entrada, descricao: entrada2 }).then((res) => {
       setCount([...count, res.data]);
     });
-}
+  }
 
   useEffect(() => {
     api.get("dados").then((res) => {
@@ -25,30 +24,32 @@ function add(){
 
   return (
     <div className="App">
-      <div>
+      <div className="container">
         <input
           type="text"
           onChange={(e) => {
             setEntrada(e.target.value);
           }}
         />
-         <input
+        <input
           type="text"
           onChange={(e) => {
             setEntrada2(e.target.value);
           }}
         />
-<button onClick={add}>enviar</button>
-        {entrada}
-      </div>
+        <button onClick={add}>enviar</button>
+    
+        </div>
 
       {count.map((item) => (
-        <div>
-          <p>{item.nome}-</p>
+        <div className="itens">
+          <p><strong>{item.nome}</strong>-{item.descricao}</p>
         </div>
       ))}
+ 
     </div>
   );
+
 }
 
 export default App;
